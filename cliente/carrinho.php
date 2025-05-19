@@ -9,6 +9,7 @@ $total = 0; //variável para somar o valor total do carrinho
 
 echo "<h2>Seu Carrinho</h2>";
 
+//empty verifica que o carrinho está vazio
 if (empty($carrinho)) {
     //se não houver itens, exibe mensagem
     echo "Carrinho vazio.<br>";
