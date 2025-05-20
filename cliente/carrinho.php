@@ -3,6 +3,7 @@ session_start(); //inicia a sessão para acessar o carrinho
 include '../config/db.php'; //conecta com o banco
 
 //recupera o carrinho da sessão, ou um array vazio se não existir
+//ao iniciar uma sessão, a espressão abaixo verificará se o carrinho está cheio. se sim, retorna ele cheio, se não retorna o carrinho(array) vazio
 $carrinho = $_SESSION['carrinho'] ?? [];
 
 $total = 0; //variável para somar o valor total do carrinho
