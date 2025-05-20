@@ -16,6 +16,7 @@ if (empty($carrinho)) {
     echo "Carrinho vazio.<br>";
 } else {
     //para cada item no carrinho (id do produto => quantidade)
+    //a variavel carrinho terá o seu id. se ele for maior o igual a quantidade de produtos, a classe PDO será acionada para adicionar os atributos do banco
     foreach ($carrinho as $id => $qtd) {
         //busca o produto no banco
         $stmt = $pdo->prepare("SELECT nome, preco FROM produtos WHERE id = ?");
@@ -27,6 +28,7 @@ if (empty($carrinho)) {
         $total += $subtotal;
 
         //exibe o produto e subtotal formatado
+        //eibe o calculo do preço multiplicando com a quantidade e subtraindo o nome
         echo "{$p['nome']} - R$ {$p['preco']} x $qtd = R$ " . number_format($subtotal, 2, ',', '.') . "<br>";
         echo "<a href='../controllers/remover_item.php?id=$id'>Remover</a><br><br>";
     }
@@ -34,7 +36,7 @@ if (empty($carrinho)) {
     //exibe o total
     echo "<strong>Total: R$ " . number_format($total, 2, ',', '.') . "</strong><br><br>";
 
-    //formulário de finalização de pedido
+    //formulário de finalização de pedido. exibindo o nome e o contato do cliente, seja email ou número
     echo '
     <form method="POST" action="../controllers/finalizar_pedido.php">
         Nome: <input name="nome" required><br><br>
