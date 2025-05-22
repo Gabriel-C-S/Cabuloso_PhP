@@ -16,7 +16,7 @@ if (empty($carrinho)) {
     echo "Carrinho vazio.<br>";
 } else {
     //para cada item no carrinho (id do produto => quantidade)
-    //a variavel carrinho terá o seu id. se ele for maior o igual a quantidade de produtos, a classe PDO será acionada para adicionar os atributos do banco
+    //a variavel carrinho terá o seu id. se ele for maior o igual a quantidade de produtos, a variavel PDO será acionada para adicionar os atributos do banco
     foreach ($carrinho as $id => $qtd) {
         //busca o produto no banco
         $stmt = $pdo->prepare("SELECT nome, preco FROM produtos WHERE id = ?");
