@@ -14,11 +14,13 @@ $preco = $_POST['preco'] ?? null;
 $tipo = $_POST['tipo'] ?? null;
 
 //verifica se todos os campos estao preenchidos
-if (!$id || !$nome || !$preco || !$tipo) {
+//die: retorna uma exibição de uma mensagem opcional 
+if (!$id && !$nome && !$preco && !$tipo) {
     die("Todos os campos são obrigatórios.");
+    //echo("Todos os campos são obrigatórios.");
 }
 
-//evitaa modificação de dados ou ataques no banco de dados.
+//evita modificação de dados ou ataques no banco de dados.
 
 $nome = htmlspecialchars($nome);
 $preco = filter_var($preco, FILTER_VALIDATE_FLOAT); //valida se o preço é um número flutuante
