@@ -3,8 +3,11 @@ session_start(); //inicia a sessão para gerenciar o carrinho
 include '../config/db.php'; //conexão com o banco
 
 //cria o carrinho na sessão, se ainda não existir
-if (!isset($_SESSION['carrinho'])) {
-    $_SESSION['carrinho'] = [];
+//cria uma condição: se o carrinho existir, retorna um array. se não existir, retorna 'carrinho vazio'
+if ($_SESSION[]){
+    return $_SESSION['carrinho'];
+} else{
+    echo'Carrinho inexistente';
 }
 
 //busca todos os produtos e serviços do banco, ordenados por nome
