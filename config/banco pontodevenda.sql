@@ -43,13 +43,15 @@ create table servico (
 id int not null primary key,
 id_funcionario int not null,
 id_cliente int not null,
+id_produto int not null,
 nome varchar(100) not null,
 descricao varchar (100),
 preco decimal (10,2) not null,
 pecas_utilizadas varchar(50),
 tempo_estimado varchar(100),
 constraint foreign key (id_funcionario) references funcionario (id),
-constraint foreign key (id_cliente) references cliente (id)
+constraint foreign key (id_cliente) references cliente (id),
+constraint foreign key (id_produto) references produto (id)
 );
 
 /*

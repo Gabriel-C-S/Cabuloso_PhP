@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../config/db.php';
+include '../config/clientedb.php';
 
 //recupera os dados do formulario
 $usuario = $_POST['usuario'] ?? null; //verifica se 'usuario' foi preenchido
@@ -24,7 +24,7 @@ if ($usuarioBD && password_verify($senha, $usuarioBD['senha'])) {
     $_SESSION['tipo'] = $usuarioBD['tipo'];
 
     //redireciona para o painel do funcionario
-    header("Location: ../funcionario/painel.php");
+    header("Location: ../config/clientedb.php");
     exit;
 } else {
     //se usuário ou senha sejam errados

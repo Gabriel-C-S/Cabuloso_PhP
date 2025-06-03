@@ -5,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';
+include '..config/produtodb.php'
 
 //valida os dados recebidos via POST
 $id = $_POST['id'] ?? null;

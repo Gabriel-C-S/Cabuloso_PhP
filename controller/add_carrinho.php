@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include "..config/produtodb.php";
+
 $id = $_POST['id'] ?? null; //recupera o ID do produto enviado via POST
 
 //se nao houver ID valido, interrompe a execuçao e exibe uma mensagem
