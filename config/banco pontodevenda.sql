@@ -3,17 +3,14 @@ use pontodevenda;
 
 create table produto(
 id int not null primary key,
-console varchar(50) not null,
-computador varchar (50) not null,
-celular varchar (50) not null,
-notebook varchar (50) not null
+nome varchar (100) not null
 );
 
 create table cliente(
 id int not null primary key,
-nome_cliente varchar (50) not null,
-telefone_cliente varchar(100) not null,
-endereco_cliente varchar(100) not null,
+nome varchar (50) not null,
+telefone varchar(100) not null,
+endereco varchar(100) not null,
 rg varchar(100) not null,
 cpf varchar (100) not null,
 email varchar(50) not null
@@ -22,8 +19,8 @@ email varchar(50) not null
 
 create table funcionario(
 id int not null primary key,
-nome_funcionario varchar (50) not null,
-telefone_funcionario bigint not null,
+nome varchar (50) not null,
+telefone bigint not null,
 email varchar (50) not null,
 rg varchar (100),
 cpf varchar (100)
@@ -46,7 +43,7 @@ create table servico (
 id int not null primary key,
 id_funcionario int not null,
 id_cliente int not null,
-nome_servico varchar(100) not null,
+nome varchar(100) not null,
 descricao varchar (100),
 preco decimal (10,2) not null,
 pecas_utilizadas varchar(50),
