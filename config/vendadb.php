@@ -15,4 +15,6 @@ $insert->$pdo query("INSERT INTO venda (id, id_funcionario ,id_cliente, id_produ
 (3, 3, 3, 4, 25/12/2027, 150, 'Cartão'),
 (4, 4, 4, 2, 04/04/2027, 2000, 'Cartão'),
 (5, 2, 5, 5, 02/03/2022, 3000, 'PIX')");
+
+//Aqui dêem inicio ao Select de uma coluna de uma tabela, pode ser qualquer uma
 ?>
