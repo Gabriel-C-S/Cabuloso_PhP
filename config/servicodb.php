@@ -14,9 +14,9 @@ $cmd = $pdo->query("INSERT INTO servico (id, id_funcionario, id_cliente, id_prod
 descricao, preco, pecas_utilizadas, tempo estimado) VALUES
 (1, 1, 3, 2, 'Concerto', 'Em Andamento', 200, '', 'Sete Dias'),
 (2, 3, 1, 3, 'Concerto', 'Finalizado', 200, '', 'Zero Dias'),
-(1, 3, 2, 2, 'Concerto', 'Finalizado', 250, '', 'Zero Dias'),
-(1, 2, 1, 4, 'Concerto', 'Em Andamento', 100, '', 'Quatorze Dias'),
-(1, 2, 3, 4, 'Concerto', 'Finalizado', 200, '', 'Um dia');");
+(3, 3, 2, 2, 'Concerto', 'Finalizado', 250, '', 'Zero Dias'),
+(4, 2, 1, 4, 'Concerto', 'Em Andamento', 100, '', 'Quatorze Dias'),
+(5, 2, 3, 4, 'Concerto', 'Finalizado', 200, '', 'Um dia');");
 
 //Aqui dêem inicio ao Select de uma coluna dessa tabela, pode ser qualquer uma
 
