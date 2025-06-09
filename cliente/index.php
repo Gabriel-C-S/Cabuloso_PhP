@@ -11,7 +11,7 @@ if (!isset($_SESSION['carrinho'])) {
 $produtos = $pdo->query("SELECT * FROM produtos ORDER BY nome")->fetchAll();
 ?>
 
-<h2>Bem-vindo à Loja</h2>
+<h2>Bem-vindo ao Cabuloso Eletronics</h2>
 
 <!-- Exibe todos os produtos/serviços com botão de adicionar -->
 <?php foreach ($produtos as $p): ?>
