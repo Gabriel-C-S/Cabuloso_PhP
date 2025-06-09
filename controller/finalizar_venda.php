@@ -1,13 +1,15 @@
 <?php
 session_start();
+
+// Garante que só funcionário logado pode acessar essa página
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../funcionario/login.php");
     exit;
 }
 
-include '../config/db.php';
+include '../config/db.php'; // Conexão com o banco
 
-//pega os IDs dos produtos selecionados para a venda
+// Recebe os IDs dos produtos selecionados no PDV (formulário)
 $produtosSelecionados = $_POST['produtos'] ?? [];
 
 if (empty($produtosSelecionados)) {
@@ -15,12 +17,12 @@ if (empty($produtosSelecionados)) {
 }
 
 try {
-    $pdo->beginTransaction(); //inicia a transação
+    $pdo->beginTransaction(); // Inicia transação para garantir integridade
 
     $total = 0;
     $dadosProdutos = [];
 
-    //busca os dados dos produtose calcula o total
+    // Para cada produto selecionado, busca o preço e soma ao total
     foreach ($produtosSelecionados as $id) {
         $stmt = $pdo->prepare("SELECT preco FROM produtos WHERE id = ?");
         $stmt->execute([$id]);
@@ -28,26 +30,29 @@ try {
 
         if ($preco !== false) {
             $total += $preco;
+            // Armazena dados para inserir os itens depois
             $dadosProdutos[] = ['id' => $id, 'preco' => $preco];
         }
     }
 
-    //registra a venda e pega o ID
+    // Insere a venda na tabela vendas e obtém o ID gerado
     $stmt = $pdo->prepare("INSERT INTO vendas (total) VALUES (?)");
     $stmt->execute([$total]);
     $vendaId = $pdo->lastInsertId();
 
-    //registra os itens da venda
+    // Insere os produtos vendidos na tabela itens_venda
     foreach ($dadosProdutos as $p) {
         $stmt = $pdo->prepare("INSERT INTO itens_venda (venda_id, produto_id, preco_unitario) VALUES (?, ?, ?)");
         $stmt->execute([$vendaId, $p['id'], $p['preco']]);
     }
 
-    $pdo->commit(); //confirmano banco
+    $pdo->commit(); // Confirma a transação
 
-    //redireciona de volta ao pdv
+    // Redireciona de volta para a página do PDV
     header("Location: ../funcionario/pdv.php");
+
 } catch (Exception $e) {
-    $pdo->rollBack(); //dsfaz tudo em caso de erro
+    $pdo->rollBack(); // Em caso de erro, desfaz todas as alterações
     die("Erro ao finalizar venda: " . $e->getMessage());
 }
+?>
