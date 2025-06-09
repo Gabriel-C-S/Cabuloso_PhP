@@ -9,7 +9,8 @@ try{
     echo "Não foi possível conectar ao banco";
 }
 
-$insert->$pdo query("INSERT INTO venda (id, id_funcionario ,id_cliente, id_produto, data_venda, valor, forma_pagamento) VALUES
+$insert->$pdo query("INSERT INTO venda (id, id_funcionario ,id_cliente, id_produto, data_venda, 
+valor, forma_pagamento) VALUES
 (1, 1, 2, 3, 10/05/2025, 3500, 'PIX'),
 (2, 5, 1, 1, 20/09/2025, 3000, 'Dinheiro'),
 (3, 3, 3, 4, 25/12/2027, 150, 'Cartão'),
@@ -17,4 +18,12 @@ $insert->$pdo query("INSERT INTO venda (id, id_funcionario ,id_cliente, id_produ
 (5, 2, 5, 5, 02/03/2022, 3000, 'PIX')");
 
 //Aqui dêem inicio ao Select de uma coluna de uma tabela, pode ser qualquer uma
+$cmd = $pdo->prepare("SELECT * FROM venda WHERE id='1'");
+$cmd->bindValues(':id',1);
+$cmd->execute();
+$resultado=$cmd->fetch(PDO::FETCH_ASSOC);
+
+foreach($resultado as $key => $value){
+    echo $key.":".$value."<br>";
+}
 ?>
