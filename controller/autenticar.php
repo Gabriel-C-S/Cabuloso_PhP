@@ -1,33 +1,26 @@
 <?php
 session_start();
-include '../config/clientedb.php';
+include '../config/db.php';
 
-//recupera os dados do formulario
-$usuario = $_POST['usuario'] ?? null; //verifica se 'usuario' foi preenchido
-$senha = $_POST['senha'] ?? null; //verifica se'senha' foi prenchido
-
-//valida se os campos foram preenchidos
-if (!$usuario || !$senha) {
-    die("Usuário e senha são obrigatórios.");
+// Verifica se os campos foram enviados
+if (!isset($_POST['usuario']) || !isset($_POST['senha'])) {
+    die("Usuário ou senha não enviados.");
 }
 
-//executa a consulta no banco para buscar o usuario
-$sql = "SELECT * FROM usuarios WHERE usuario = ?";
-$stmt = $pdo->prepare($sql);
+$usuario = $_POST['usuario'];
+$senha = $_POST['senha'];
+
+// Consulta o banco buscando o funcionário
+$stmt = $pdo->prepare("SELECT * FROM funcionarios WHERE usuario = ?");
 $stmt->execute([$usuario]);
-$usuarioBD = $stmt->fetch();
+$funcionario = $stmt->fetch();
 
-//verifica se o usuario existe e se a senha esta correta
-if ($usuarioBD && password_verify($senha, $usuarioBD['senha'])) {
-    //salva os dados do usuario na sessao
-    $_SESSION['usuario'] = $usuarioBD['nome'];
-    $_SESSION['tipo'] = $usuarioBD['tipo'];
-
-    //redireciona para o painel do funcionario
-    header("Location: ../config/clientedb.php");
-    exit;
+if ($funcionario && password_verify($senha, $funcionario['senha'])) {
+    // Se o usuário existe e a senha está correta
+    $_SESSION['usuario'] = $funcionario['usuario'];
+    header("Location: ../funcionario/painel.php");
 } else {
-    //se usuário ou senha sejam errados
+    // Falha na autenticação
     echo "Usuário ou senha inválidos.";
+    echo "<br><a href='../funcionario/login.php'>← Tentar novamente</a>";
 }
-

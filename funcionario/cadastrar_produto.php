@@ -31,7 +31,7 @@ if (!isset($_SESSION['usuario'])) {
 <a href="painel.php">← Voltar ao painel</a>
 
 <?php
-include '../config/produtodb.php'; //conecta ao banco de dados
+include '../config/db.php'; //conecta ao banco de dados
 
 //consulta todos os produtos e serviços, ordenando por id
 $produtos = $pdo->query("SELECT * FROM produtos ORDER BY id DESC")->fetchAll();

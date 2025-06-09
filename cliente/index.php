@@ -1,28 +1,25 @@
 <?php
-session_start(); //inicia a sessão para gerenciar o carrinho
-include '../config/db.php'; //conexão com o banco
+session_start(); // Inicia a sessão para uso do carrinho
+include '../config/db.php'; // Conexão com o banco de dados
 
-//cria o carrinho na sessão, se ainda não existir
-//cria uma condição: se o carrinho existir, retorna um array. se não existir, retorna 'carrinho vazio'
-if ($_SESSION[]){
-    return $_SESSION['carrinho'];
-} else{
-    echo'Carrinho inexistente';
+// Cria o carrinho se ele ainda não existir na sessão
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
 }
 
-//busca todos os produtos e serviços do banco, ordenados por nome
+// Busca todos os produtos e serviços cadastrados, ordenados por nome
 $produtos = $pdo->query("SELECT * FROM produtos ORDER BY nome")->fetchAll();
 ?>
 
 <h2>Bem-vindo à Loja</h2>
 
-<!--exibe todos os produtos/serviços-->
+<!-- Exibe todos os produtos/serviços com botão de adicionar -->
 <?php foreach ($produtos as $p): ?>
   <div style="border:1px solid #ccc; padding:10px; margin:10px;">
     <strong><?= htmlspecialchars($p['nome']) ?></strong><br>
-    R$ <?= number_format($p['preco'], 2, ',', '.') ?> (<?= $p['tipo'] ?>)<br>
+    R$ <?= number_format($p['preco'], 2, ',', '.') ?> (<?= htmlspecialchars($p['tipo']) ?>)<br>
 
-    <!--botão para adicionar ao carrinho-->
+    <!-- Botão para adicionar ao carrinho -->
     <form method="POST" action="../controllers/add_carrinho.php">
       <input type="hidden" name="id" value="<?= $p['id'] ?>">
       <button type="submit">Adicionar ao carrinho</button>
@@ -30,7 +27,6 @@ $produtos = $pdo->query("SELECT * FROM produtos ORDER BY nome")->fetchAll();
   </div>
 <?php endforeach; ?>
 
-<!--links úteis-->
+<!-- Links úteis -->
 <a href="carrinho.php">Ver Carrinho</a>
 <a href="../login.php" style="font-size: small; float: right;">Área do Funcionário</a>
-

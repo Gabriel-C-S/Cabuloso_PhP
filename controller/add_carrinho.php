@@ -1,32 +1,24 @@
 <?php
 session_start();
 
-include "..config/produtodb.php";
-
-$id = $_POST['id'] ?? null; //recupera o ID do produto enviado via POST
-
-//se nao houver ID valido, interrompe a execuçao e exibe uma mensagem
-if (!$id) {
-    die("ID inválido.");
+// Verifica se foi enviado o ID do produto
+if (!isset($_POST['id'])) {
+    die("Produto inválido.");
 }
 
-//consulta o produto no banco
-$stmt = $pdo->prepare("SELECT estoque, tipo FROM produtos WHERE id = ?");
-$stmt->execute([$id]);
-$produto = $stmt->fetch();
+$id = intval($_POST['id']); // Garante que o ID seja um número inteiro
 
-//se for produto e o estoque for 0, nao permite adicionar ao carrinho
-if ($produto['tipo'] == 'produto' && $produto['estoque'] <= 0) {
-    die("Produto fora de estoque.");
+// Inicializa o carrinho se ainda não existir
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
 }
 
-//adiciona o produto ao carrinho
-if (!isset($_SESSION['carrinho'][$id])) {
-    $_SESSION['carrinho'][$id] = 1; //se não tiver no carrinho, coloca com quantidade 1
+// Se o produto já estiver no carrinho, incrementa a quantidade
+if (isset($_SESSION['carrinho'][$id])) {
+    $_SESSION['carrinho'][$id]++;
 } else {
-    $_SESSION['carrinho'][$id]++; //se jativer, a quantidade
+    $_SESSION['carrinho'][$id] = 1;
 }
 
-//mANDA PRA PÁGINA INICAL
+// Redireciona de volta para a loja
 header("Location: ../cliente/index.php");
-exit;
