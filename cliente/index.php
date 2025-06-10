@@ -4,7 +4,7 @@ include '../config/clientedb.php'; // Conexão com o banco de dados
 
 // Cria o carrinho se ele ainda não existir na sessão
 if (!isset($_SESSION['carrinho'])) {
-    $_SESSION['carrinho'] = [];
+    $_SESSION['carrinho'] = [0];
 }
 
 // Busca todos os produtos e serviços cadastrados, ordenados por nome
