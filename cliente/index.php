@@ -1,6 +1,6 @@
 <?php
 session_start(); // Inicia a sessão para uso do carrinho
-include '../config/db.php'; // Conexão com o banco de dados
+include '../config/clientedb.php'; // Conexão com o banco de dados
 
 // Cria o carrinho se ele ainda não existir na sessão
 if (!isset($_SESSION['carrinho'])) {
