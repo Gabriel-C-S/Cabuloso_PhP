@@ -1,0 +1,2 @@
+O projeto consiste em um site de venda de eletrônicos e vende também o serviço de conserto. O site é desenvolvido em php puro com conexão ao banco de dados MySQL. 
+A usabilidade do sistema comsiste em um sistema de PDV (ponto de venda), onde simula um caixa e a compra dos determinados produtos e serviços onde a estrutura do banco abrange (tabela de produtos, cliente, funcionario, serviço e venda) 
