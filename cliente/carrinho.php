@@ -6,7 +6,7 @@ if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
 
-include '../config/db.php'; // Conecta ao banco de dados
+include '../config/produtodb.php'; // Conecta ao banco de dados
 
 $carrinho = $_SESSION['carrinho']; // Pega os produtos do carrinho
 $total = 0;
