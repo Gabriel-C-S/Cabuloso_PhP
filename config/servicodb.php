@@ -1,4 +1,4 @@
-<?phpMore actions
+<?php
 $database = 'mysql:database=pontodevenda;host=localhost';
 $username = 'root';
 $password = 'root';
