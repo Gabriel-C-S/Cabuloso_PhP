@@ -1,9 +1,13 @@
-<?phpAdd commentMore actions
+<?php
 //Conexão com o banco de dados ao php
 
 $database = 'mysql:database=pontodevenda;host=localhost';
 $username = 'root';
 $password = 'root';
+
+try{
+    $pdo = new PDO ($database, $username, $password);
+} catch(Exception $e){
     echo "Não foi possível conectar ao banco";
 }
 
@@ -25,7 +29,7 @@ $cmd->bindValues(':id',2);
 $cmd->execute();
 $resultado=$cmd->fetch(PDO::FETCH_ASSOC);
 
-foreach($resultado as $key => $value){Add commentMore actions
+foreach($resultado as $key => $value){
     echo $key.":".$value."<br>";
 }
 ?>
