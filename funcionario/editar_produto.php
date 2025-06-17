@@ -5,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';s
+include '../config/database.php';s
 
 //pega o ID do produto a ser editado da URL
 $id = $_GET['id'] ?? 0; //caso o 'id' não exista, define 0 como padrão
