@@ -5,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';
+include '../config/database.php';
 
 // Verifica se os dados foram enviados corretamente
 if (!isset($_POST['nome'], $_POST['preco'], $_POST['tipo'])) {
