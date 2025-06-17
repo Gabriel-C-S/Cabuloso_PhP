@@ -5,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';
+include '../config/database.php';
 
 // Verifica se foi enviado o ID do produto
 if (!isset($_GET['id'])) {
