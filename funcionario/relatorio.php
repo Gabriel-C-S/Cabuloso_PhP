@@ -5,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';
+include '../config/database.php';
 
 //pega datas do formulário (se enviadas), senão usa hoje
 $data_inicio = $_GET['inicio'] ?? date('Y-m-01'); //primeiro dia do mês atual
