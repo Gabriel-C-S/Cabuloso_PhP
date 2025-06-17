@@ -1,12 +1,13 @@
 <?php
 session_start();
 
-include '../config/db.php'; // conecta com o banco
+include '../config/database.php'; // conecta com o banco
 
 // Verifica se o carrinho existe e não está vazio, e se os dados do cliente foram enviados via POST
 if (!isset($_SESSION['carrinho']) || empty($_SESSION['carrinho']) || 
     !isset($_POST['nome']) || !isset($_POST['contato'])) {
     echo "Carrinho vazio ou dados do cliente ausentes.";
+    
     exit;
 }
 
@@ -61,3 +62,4 @@ try {
     echo "Erro ao finalizar pedido: " . $e->getMessage();
 }
 ?>
+<a href='index.php'>← Voltar às compras</a>

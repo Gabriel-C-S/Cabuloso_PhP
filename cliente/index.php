@@ -1,6 +1,6 @@
 <?php
 session_start(); // Inicia a sessão para uso do carrinho
-include '../config/clientedb.php'; // Conexão com o banco de dados
+include '../config/database.php'; // Conexão com o banco de dados
 
 // Cria o carrinho se ele ainda não existir na sessão
 if (!isset($_SESSION['carrinho'])) {
@@ -8,7 +8,7 @@ if (!isset($_SESSION['carrinho'])) {
 }
 
 // Busca todos os produtos e serviços cadastrados, ordenados por nome
-$produtos = $pdo->query("SELECT * FROM produtos ORDER BY nome")->fetchAll();
+$produtos = $pdo->query("SELECT * FROM produto ORDER BY nome")->fetchAll();
 ?>
 
 <h2>Bem-vindo ao Cabuloso Eletronics</h2>

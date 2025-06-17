@@ -6,26 +6,26 @@ if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
 
-include '../config/produtodb.php'; // Conecta ao banco de dados
+include '../config/database.php'; // Conecta ao banco de dados
 
 $carrinho = $_SESSION['carrinho']; // Pega os produtos do carrinho
 $total = 0;
 
 // Se o carrinho estiver vazio, mostra mensagem e botão de voltar
+
+// Coleta os IDs dos produtos no carrinho
 if (empty($carrinho)) {
     echo "<p>Seu carrinho está vazio.</p>";
     echo "<a href='index.php'>← Voltar às compras</a>";
     exit;
 }
-
-// Coleta os IDs dos produtos no carrinho
 $ids = implode(',', array_keys($carrinho));
 
 // Busca os dados dos produtos no banco usando os IDs do carrinho
-$query = $pdo->query("SELECT * FROM produtos WHERE id IN ($ids)");
+$query = $pdo->query("SELECT * FROM produto WHERE id IN ($ids)");
 $produtos = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
+<a href='index.php'>← Voltar às compras</a>
 <h2>Seu Carrinho</h2>
 
 <table border="1" cellpadding="8" cellspacing="0">

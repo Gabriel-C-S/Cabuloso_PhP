@@ -9,13 +9,13 @@ if (isset($_SESSION['usuario'])) {
 
 //verifica se o formulsrio foi enviado via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    include 'config/db.php'; //conexão com o banco
+    include 'config/database.php'; //conexão com o banco
 
     $usuario = $_POST['usuario'] ?? '';
     $senha = $_POST['senha'] ?? '';
 
     //consulta o banco para encontrar o funcionario
-    $stmt = $pdo->prepare("SELECT * FROM funcionarios WHERE usuario = ? AND senha = ?");
+    $stmt = $pdo->prepare("SELECT * FROM funcionario WHERE nome = ? AND senha = ?");
     $stmt->execute([$usuario, $senha]);
     $funcionario = $stmt->fetch();
 
@@ -35,12 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!--mensagem de erro, se existir-->
 <?php if (isset($erro)): ?>
   <p style="color:red;"><?= $erro ?></p>
-<?php endif; ?>
-
-<!--frmulario de login-->
-<form method="POST">
-  Usuário: <input name="usuario" required><br><br>
-  Senha: <input name="senha" type="password" required><br><br>
-  <button type="submit">Entrar</button>
-</form>
-
+  <?php endif; ?>
+  
+  <!--frmulario de login-->
+  <form method="POST">
+    Usuário: <input name="usuario" required><br><br>
+    Senha: <input name="senha" type="password" required><br><br>
+    <a href="cadastrar_produto.php" button type="submit">Entrar</button>
+  </form>
+  

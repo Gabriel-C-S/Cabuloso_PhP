@@ -5,10 +5,10 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';
+include '../config/database.php';
 
 //consulta vendas, da mais nova para a mais antiga
-$vendas = $pdo->query("SELECT * FROM vendas ORDER BY data DESC")->fetchAll();
+$vendas = $pdo->query("SELECT * FROM venda ORDER BY data DESC")->fetchAll();
 ?>
 
 <h2>Relatório de Vendas</h2>
