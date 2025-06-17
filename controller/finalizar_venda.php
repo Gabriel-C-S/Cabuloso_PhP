@@ -7,7 +7,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php'; // Conexão com o banco
+include '../config/database.php'; // Conexão com o banco
 
 // Recebe os IDs dos produtos selecionados no PDV (formulário)
 $produtosSelecionados = $_POST['produtos'] ?? [];
