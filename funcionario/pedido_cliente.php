@@ -4,7 +4,7 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit;
 }
-include '../config/db.php';
+include '../config/database.php';
 
 // Consulta todas as vendas realizadas por clientes
 $vendas = $pdo->query("SELECT * FROM vendas WHERE nome_cliente IS NOT NULL ORDER BY data DESC")->fetchAll();
