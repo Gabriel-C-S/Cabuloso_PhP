@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../config/db.php';
+include '../config/database.php';
 
 // Verifica se os campos foram enviados
 if (!isset($_POST['usuario']) || !isset($_POST['senha'])) {
