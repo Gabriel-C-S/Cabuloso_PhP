@@ -5,7 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-include '../config/db.php';
+include '../config/database.php';
 
 //busca produtos e serviços cadastrados
 $produtos = $pdo->query("SELECT * FROM produtos ORDER BY nome")->fetchAll();
