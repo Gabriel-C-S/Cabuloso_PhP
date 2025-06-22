@@ -11,6 +11,7 @@ if (isset($_SESSION['usuario'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include 'config/database.php'; //conexão com o banco
 
+    //Aqui foi usado o usuario e senha, conectando os dois atributos do banco
     $usuario = $_POST['usuario'] ?? '';
     $senha = $_POST['senha'] ?? '';
 
@@ -37,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <p style="color:red;"><?= $erro ?></p>
   <?php endif; ?>
   
-  <!--frmulario de login-->
+  <!--formulario de login-->
+  <!--Tentem transformar o Entrar em um botão-->
   <form method="POST">
     Usuário: <input name="usuario" required><br><br>
     Senha: <input name="senha" type="password" required><br><br>
