@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h2>Cadastro do Cliente</h2>
 
-<form method="POST">
+<form method="POST" action="../controller/finalizar_pedido.php">
+
   <!-- nome do cliente -->
   Nome: <input type="text" name="nome" required><br><br>
 

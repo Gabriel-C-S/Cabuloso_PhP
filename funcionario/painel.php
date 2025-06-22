@@ -16,6 +16,9 @@ if (!isset($_SESSION['usuario'])) {
   <li><a href="cadastrar_produto.php">Cadastrar Produtos/Serviços</a></li>
   <li><a href="pdv.php">Registrar Venda</a></li>
   <li><a href="relatorio_vendas.php">Relatório de Vendas</a></li>
+  <a href="relatorio.php">Relatório por Data</a>
   <li><a href="pedidos_clientes.php">Pedidos de Clientes</a></li>
   <li><a href="relatorio.php">Relatório de Vendas</a></li>
+  <a href="logout.php">Sair</a>
+
 </ul>

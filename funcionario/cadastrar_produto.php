@@ -5,7 +5,7 @@ session_start();
 <!--formulario para cadastrar produto ou serviço -->
 <h2>Cadastrar Produto ou Serviço</h2>
 
-<form method="POST" action="">
+<form method="POST" action="../controller/salvar_produto.php">
   <!--campo para nome do produto/serviço -->
   Nome: <input name="nome" required><br><br>
 
