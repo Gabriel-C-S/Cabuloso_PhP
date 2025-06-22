@@ -41,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form method="POST">
     Usuário: <input name="usuario" required><br><br>
     Senha: <input name="senha" type="password" required><br><br>
-    <a href="cadastrar_produto.php" button type="submit">Entrar</button>
+    <a href="cadastrar_produto" type="submit">Entrar</button>
   </form>
   

@@ -16,7 +16,7 @@ $total = 0;
 // Coleta os IDs dos produtos no carrinho
 if (empty($carrinho)) {
     echo "<p>Seu carrinho está vazio.</p>";
-    echo "<a href='index.php'>← Voltar às compras</a>";
+    echo "<a href='index.php'>← Voltar ao início</a>";
     exit;
 }
 $ids = implode(',', array_keys($carrinho));
