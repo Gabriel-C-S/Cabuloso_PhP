@@ -25,7 +25,6 @@ $ids = implode(',', array_keys($carrinho));
 $query = $pdo->query("SELECT * FROM produto WHERE id IN ($ids)");
 $produtos = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<a href='index.php'>← Voltar às compras</a>
 <h2>Seu Carrinho</h2>
 
 <table border="1" cellpadding="8" cellspacing="0">
