@@ -3,13 +3,13 @@ session_start(); //inicia a sessao
 
 //seestiver logado, redireciona direto para o painel
 if (isset($_SESSION['usuario'])) {
-    header("Location: funcionario/painel.php");
+    header("Location: funcionario/cadastrar_produto.php");
     exit;
 }
 
 //verifica se o formulsrio foi enviado via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    include 'config/database.php'; //conexão com o banco
+    include '../config/database.php'; //conexão com o banco
 
     //Aqui foi usado o usuario e senha, conectando os dois atributos do banco
     $usuario = $_POST['usuario'] ?? '';
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //se encontrou o usuaroi, cria a sessao
     if ($funcionario) {
         $_SESSION['usuario'] = $funcionario['usuario'];
-        header("Location: funcionario/painel.php");
+        header("Location: funcionario/cadastrar_produto.php");
         exit;
     } else {
         $erro = "Usuário ou senha inválidos.";
@@ -43,6 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form method="POST">
     Usuário: <input name="usuario" required><br><br>
     Senha: <input name="senha" type="password" required><br><br>
-    <a href="cadastrar_produto" type="submit">Entrar</button>
-  </form>
-  
+</form>
+
+<a href="../funcionario/cadastrar_produto"><button>Entrar</button></a>

@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['usuario']) || !isset($_SESSION['senha'])) {
+    header("Location: cadastrar_produto.php");
+    exit;
+}
+
+include 'login.php';
 ?>
 
 <!--formulario para cadastrar produto ou serviço -->
